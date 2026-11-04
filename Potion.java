@@ -7,7 +7,7 @@ public class Potion extends Item {
     private String type; // Stores the potion type
     private int buff; // Stores the roll value
 
-    public Potion(String name, int cost, Sting type) {
+    public Potion(String name, int cost, String type) {
         super(name, cost); 
         this.type = type; // saves potion type
         this.buff = 0; // start value is 0

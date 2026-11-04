@@ -1,6 +1,6 @@
 // Item.java class will store, save, and return the name and cost of the item
 
-public class Item {
+public abstract class Item {
 
     private String name; // Stores item name
     private int cost; // Stores how much item cost
