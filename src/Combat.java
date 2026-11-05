@@ -11,12 +11,12 @@ public class Combat {
         input = new Scanner(System.in);
     }
 
-    public void startCombat(Player player, Wizard wizard) {
+    public void startCombat(Player player, Enemy enemy) {
 
-        while (player.getHealth() > 0 && wizard.getHealth() > 0) {
+        while (player.getHealth() > 0 && enemy.getHealth() > 0) {
 
             System.out.println("\nYour HP: " + player.getHealth());
-            System.out.println("Wizard HP: " + wizard.getHealth());
+            System.out.println("Wizard HP: " + enemy.getHealth());
 
             System.out.println("\n1. Attack");
             System.out.println("2. Use special attack");
@@ -25,22 +25,22 @@ public class Combat {
             int choice = input.nextInt();
 
             if (choice == 1) {
-                playerAttack(player, wizard);
+                playerAttack(player, enemy);
             }
             else if (choice == 2) {
-                specialAttack(player, wizard);
+                specialAttack(player, enemy);
             }
             else {
                 System.out.println("Invalid choice!");
                 continue;
             }
             if (wizard.getHealth() > 0) {
-                wizardAttack(player, wizard);
+                wizardAttack(player, enemy);
             }
         }
     }
 
-    public void playerAttack(Player player, Wizard wizard) {
+    public void playerAttack(Player player, Enemy enemy) {
 
         int hitChance = rand.nextInt(100) + 1;
 
@@ -50,14 +50,14 @@ public class Combat {
 
             wizard.takeDamage(damage);
 
-            System.out.println("You hit the Wizard for " + damage + " damage!");
+            System.out.println("You hit the Enemy for " + damage + " damage!");
         }
         else {
             System.out.println("Your attack missed!");
         }
     }
 
-    public void specialAttack(Player player, Wizard wizard) {
+    public void specialAttack(Player player, Enemy enemy) {
 
         int damage = rand.nextInt(15) + player.getStrength();
 
@@ -67,7 +67,7 @@ public class Combat {
         System.out.println("You dealt " + damage + " damage!");
     }
 
-    public void wizardAttack(Player player, Wizard wizard) {
+    public void wizardAttack(Player player, Enemy enemy) {
 
         int hitChance = rand.nextInt(100) + 1;
 
@@ -77,10 +77,10 @@ public class Combat {
 
             player.takeDamage(damage);
 
-            System.out.println("The Wizard hit you for " + damage + " damage!");
+            System.out.println("The Enemy hit you for " + damage + " damage!");
         }
         else {
-            System.out.println("The Wizard's spell missed!");
+            System.out.println("The Enemy's spell missed!");
         }
     }
 }
